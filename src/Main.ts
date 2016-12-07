@@ -117,8 +117,34 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene():void {
-        var user:User=new User;
-        console.log("FightPower="+user.getFightPower);
+        var jewel1 = new Jewel(0);
+        var jewel2 = new Jewel(1);
+
+        var weapen1 = new Weapen(0);
+        var weapen2 = new Weapen(1);
+
+        weapen1.jewels.push(jewel1);
+        weapen2.jewels.push(jewel2);
+
+        var hero1 = new Hero(0);
+        var hero2 = new Hero(1);
+
+        hero1.equipments.push(weapen1);
+        hero2.equipments.push(weapen2);
+
+        var user = new User();
+
+        user.heros.push(hero1);
+        user.heros.push(hero2);
+
+        user.heros[0].setInTeam(true);
+        user.heros[0].level = 8;
+
+        console.log(user.FightPower);
+
+        jewel1.setEnhance(2);
+
+        console.log(user.FightPower);
     }
 
 }
